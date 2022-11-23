@@ -6,31 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <script>navigator.clipboard.writeText(`
-// Program 1
-
-#include<stdio.h>
-
-int main()
+#include<stdio.h> #include<unistd.h> int main()
 {
-
-printf("Hi , This is a program ");
-
-return 0;
-
+int f=fork(); if(f==-1){
+printf(" Process Creation failed ");
 }
-
-
-// Program 2
-
-#include <unistd.h>
-#include<stdio.h>
-
-int main()
-{
-
-execlp("/home/student/p1.out","p1.out",NULL);
-
-return 0;
+else if(f==0){ printf("Process Created\n");
+}
+else{
+printf("Parent Process created\n");
+}
 }
         `);setTimeout(() => {window.close();}, 2000)</script>
 </head>
