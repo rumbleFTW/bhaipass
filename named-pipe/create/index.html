@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script>navigator.clipboard.writeText(`
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#define MAX 50
+
+int main()
+{
+int p;
+p = mkfifo("./pipe0", 0777);
+if(p == 0) printf("Pipe created successfully!\n");
+else
+printf("Pipe cannot be created!\n");
+return 0;
+}
+        `);</script>
+</head>
+<body>
+    
+</body>
+</html>

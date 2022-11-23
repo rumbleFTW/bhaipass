@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script>navigator.clipboard.writeText(`
+#include <stdio.h>
+#include <pthread.h>
+#include <unistd.h>
+
+void *invoke(void* arg)
+{
+   int count;
+   printf("Thread is executing...\n");
+   for(count = 1; count <=10; count++)
+   {
+       fflush(stdout);
+       printf("%d ", count);
+       sleep(1);
+   }
+}
+
+int main()
+{
+   pthread_t thread;
+   printf("Creating thread\n");
+   int ret = pthread_create(&thread, NULL, invoke, NULL);
+   if(ret) printf("Thread creation unsuccessful!\n");
+   sleep(10);
+   printf("\nExiting main thread\n");
+   return 0;
+}
+`);setTimeout(() => {window.close();}, 2000)</script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script>navigator.clipboard.writeText(`
+#include <stdio.h>
+#include <signal.h>
+#include <unistd.h>
+
+void invoke(int signum)
+{
+   printf("Alarm ping!\n");
+   alarm(2);
+   fflush(stdout);
+}
+
+int main()
+{
+   signal(SIGALRM, invoke);
+   alarm(2);
+   int count = 0;
+   while(1)
+   {
+       count++;
+       pause();
+       printf("Ping number %d\n", count);
+       if(count >= 10) break;
+   }
+   return 0;
+}
+`);setTimeout(() => {window.close();}, 2000)</script>
+</head>
+<body>
+    
+</body>
+</html>

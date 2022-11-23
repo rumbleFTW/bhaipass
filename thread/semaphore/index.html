@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script>navigator.clipboard.writeText(`
+#include<stdio.h>
+#include<unistd.h>
+#include<pthread.h>
+#include<semaphore.h>
+sem_t mutex;
+void *fun(void *p)
+{
+int t=*(int *)p;
+sem_wait(&mutex);
+printf("THread entered %d\n ",t);
+sleep(4);
+printf("THread left %d\n ",t);
+sem_post(&mutex);
+}
+int main()
+{
+int a=1,b=2;
+pthread_t t1,t2;
+sem_init(&mutex,0,1);
+pthread_create(&t1,NULL,fun,(void*)&a);
+sleep(2);
+pthread_create(&t2,NULL,fun,(void*)&b);
+pthread_join(t1,NULL);
+pthread_join(t2,NULL);
+sem_destroy(&mutex);
+}
+`);setTimeout(() => {window.close();}, 2000)</script>
+</head>
+<body>
+    
+</body>
+</html>

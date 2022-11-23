@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script>navigator.clipboard.writeText(`
+#include <sys/utsname.h>
+#include <sys/sysinfo.h>
+#include <sys/vfs.h>
+#include<math.h>
+#include<stdio.h>
+int main(){
+
+ struct utsname u;
+ 
+ int a1=uname(&u);
+ 
+ if(a1==0)
+ {
+    printf("%s\n",u.sysname);
+    printf("%s\n",u.release);
+    printf("%s\n",u.sysname);
+    printf("%s\n",u.version);
+    printf("%s\n",u.machine);
+  }
+  
+  
+  struct sysinfo s;
+  
+  int b=sysinfo(&s);
+  
+  if(b==0)
+  {
+    printf("%ld minutes\n",((s.uptime)/60));
+    unsigned long f=((s.totalram)/(1024*1024));
+    printf("%lu MB\n",f);
+    unsigned long c=((s.totalram-s.freeram)/(1024*1024));
+    printf("%lu MB\n",c);
+    unsigned long j=(s.totalswap/(1024*1024));
+    printf("%lu MB\n",j);
+    unsigned long d=((s.totalswap-s.freeswap)/(1024*1024));
+    printf("%hu \n",s.procs);
+    
+   }
+   
+   
+   struct statfs a;
+   int p=statfs("./",&a);
+   
+   if(p==0)
+   {
+   
+     unsigned long t=((a.f_bsize*a.f_blocks)/(1024*1024*1024));
+     printf("%lu GB",t);
+     }
+    return 0;
+    }
+        `);</script>
+</head>
+<body>
+    
+</body>
+</html>

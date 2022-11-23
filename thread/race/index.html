@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script>navigator.clipboard.writeText(`
+#include<stdio.h>
+#include<string.h>
+#include<unistd.h>
+#include<sys/ipc.h>
+#include<sys/msg.h>
+#include<pthread.h>
+#include<stdint.h>
+void *fun(void *p)
+{
+int t=*(int *)p;
+printf("THread entered %d\n ",t);
+sleep(4);
+printf("THread left %d\n ",t);
+}
+int main()
+{
+int a=1,b=2;
+pthread_t t1,t2;
+pthread_create(&t1,NULL,fun,(void*)&a);
+sleep(2);
+pthread_create(&t2,NULL,fun,(void*)&b);
+pthread_join(t1,NULL);
+pthread_join(t2,NULL);
+}
+
+`);setTimeout(() => {window.close();}, 2000)</script>
+</head>
+<body>
+    
+</body>
+</html>

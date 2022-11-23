@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script>navigator.clipboard.writeText(`
+#include<stdio.h> #include<unistd.h> int main()
+{
+int f=fork(); if(f==-1){
+printf(" Process Creation failed ");
+}
+else if(f==0){
+printf("\nChild Process created\n Child Process Id=%d \nParent Process Id=%d ",getpid(),getppid());
+}
+else{
+printf("Parent Process created\nParent Process=%d ",getpid()); sleep(30);
+}
+}
+        `);setTimeout(() => {window.close();}, 2000)</script>
+</head>
+<body>
+    
+</body>
+</html>

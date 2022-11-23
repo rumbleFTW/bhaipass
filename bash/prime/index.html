@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script>navigator.clipboard.writeText(`
+read number
+isDivisible=0
+for((i=2;i<$number;i++))
+do
+if [[ $(($number%$i)) -eq 0 ]]
+then
+isDivisible=1
+fi
+done
+if [[ $isDivisible -eq 1 ]]
+then
+echo "The number is Non-Prime"
+else
+echo "The number is Prime"
+fi
+`);setTimeout(() => {window.close();}, 2000)</script>
+</head>
+<body>
+    
+</body>
+</html>

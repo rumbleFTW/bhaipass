@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script>navigator.clipboard.writeText(`
+// Program 1
+
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
+#include <string.h>
+#include <stdio.h>
+#include <memory.h>
+
+#define SIZE 100
+
+int main()
+{
+int shmid = shmget((key_t)5255, SIZE, IPC_CREAT|0666);
+void* memory;
+memory = shmat(shmid, NULL, 0);
+char* char_mem;
+char_mem = (char*)memory;
+char str[SIZE];
+printf("Enter the string to be sent to shared memory: ");
+fflush(stdin);
+fgets(str, sizeof(char_mem), stdin);
+memset(char_mem, '\0', SIZE);
+memcpy(char_mem, str, sizeof(str));
+return 0;
+}
+
+// Program 2
+
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/ipc.h>
+#include<sys/shm.h>
+
+#define SIZE 10
+
+int main()
+{
+int shmid = shmget((key_t)5255, SIZE, IPC_CREAT | 0666);
+void* memory;
+memory = shmat(shmid, NULL, 0);
+char* char_mem;
+char_mem = (char*)memory;
+char str[10];
+printf("Extracted string from shared memory: %s\n", char_mem);
+shmdt(memory);
+return 0;
+}
+        `);setTimeout(() => {window.close();}, 2000)</script>
+</head>
+<body>
+    
+</body>
+</html>
