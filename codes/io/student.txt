@@ -1,0 +1,36 @@
+import java.io.*;
+
+class Student
+{
+    String name;
+    int roll, score;
+    Student(String name, int roll, int score)
+    {
+        this.name = name;
+        this.roll = roll;
+        this.score = score;
+    }
+    void writeToFile(String path)
+    {
+        try
+        {
+            FileOutputStream oStream = new FileOutputStream(new File(path));
+            String details = "Name: "+this.name+"\nRoll: "+this.roll+"\nScore: "+this.score;
+            oStream.write(details.getBytes());
+            oStream.close();
+        }
+        catch(IOException e)
+        {
+            System.out.println(e);
+        }
+    }
+}
+
+public class ClassWriter
+{
+    public static void main(String[] args)
+    {
+        Student s1 = new Student("Rajdeep Ghosh", 8, 60);
+        s1.writeToFile("students.txt");
+    }
+}

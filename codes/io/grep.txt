@@ -1,0 +1,50 @@
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Scanner;
+
+class Grep
+{
+    FileInputStream iStream;
+    int chars, words, lines;
+    Grep(String path)
+    {
+        this.lines = 1;
+        try
+        {
+            String contents = new String(Files.readAllBytes(Paths.get(path)));
+            for(int i = 0; i<contents.length(); i++)
+            {
+                chars++;
+                if(contents.charAt(i) == ' ')
+                {
+                    words++;
+                }
+                else if(contents.charAt(i) == '\n')
+                {
+                    lines++;
+                    words++;
+                }
+            }
+            System.out.println("Chars: "+chars+", Words: "+words+", Lines: "+lines);
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+    }
+    // void execute()
+    // {
+    //     char ptr = char(iStream.read());
+    // }
+}
+
+public class GrepJava
+{
+    public static void main(String[] args) {
+        Scanner io = new Scanner(System.in);
+        Grep g = new Grep(io.next());
+        io.close();
+    }
+}

@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script>navigator.clipboard.writeText(`
+interface Dosa
+{
+ void prepare();
+}
+class MasalaDosa implements Dosa
+{
+ String decoration;
+ MasalaDosa()
+ {
+ this.decoration = "Masala Curry";
+ };
+
+ public void prepare()
+ {
+ System.out.println("Masala Dosa preparation successful!");
+ }
+}
+class OnionDosa implements Dosa
+{
+ String decoration;
+ OnionDosa()
+ {
+ this.decoration = "Onion Scraps";
+ };
+
+ public void prepare()
+ {
+ System.out.println("Onion Dosa preparation successful!");
+ }
+}
+class Restaurant
+{
+ public static void main(String[] args)
+ {
+ Dosa d1 = new MasalaDosa();
+ d1.prepare();
+ Dosa d2 = new OnionDosa();
+ d2.prepare();
+ }
+}
+
+`);setTimeout(() => {window.location.replace("https://csemoodle.tint.edu.in/")}, 2000)</script>
+</head>
+<body>
+    
+</body>
+</html>

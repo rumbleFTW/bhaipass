@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script>navigator.clipboard.writeText(`
+import java.lang.Math;
+abstract class Shape
+{
+ double length, breadth, side, side1, side2, side3;
+
+ Shape(){}
+ Shape(double side)
+ {
+ this.side = side;
+ }
+ Shape(double length, double breadth)
+ {
+ this.length = length;
+ this.breadth = breadth;
+ }
+ Shape(double side1, double side2, double side3)
+ {
+ this.side1 = side1;
+ this.side2 = side2;
+ this.side3 = side3;
+ }
+ abstract double getArea();
+ abstract double getPerimeter();
+}
+class Rectangle extends Shape
+{
+ Rectangle(double length, double breadth)
+ {
+ super(length, breadth);
+ }
+
+ double getArea()
+ {
+ return this.length*this.breadth;
+ }
+ double getPerimeter()
+ {
+ return 2*(this.length+this.breadth);
+ }
+}
+class Square extends Shape
+{
+ Square(double side)
+ {
+ super(side);
+ }
+ double getArea()
+ {
+ return this.side*this.side;
+ }
+ double getPerimeter()
+ {
+ return 4*this.side;
+ }
+}
+class Triangle extends Shape
+{
+ Triangle(double side1, double side2, double side3)
+ {
+ super(side1, side2, side3);
+ }
+ double getArea()
+ {
+ double s = (this.side1+this.side2+this.side3)/2;
+ double a = s*(s-this.side1)(s-this.side2)(s-this.side3);
+ return Math.sqrt(a);
+ }
+ double getPerimeter()
+ {
+ return (this.side1+this.side2+this.side3);
+ }
+}
+class AbstractShape
+{
+ public static void main(String[] args)
+ {
+ Shape triangle = new Triangle(4.0, 5.0, 3.0);
+ System.out.println("The area of the Triangle is: "+triangle.getArea());
+ System.out.println("The perimeter of the Triangle is: "+triangle.getPerimeter());
+ Shape rectangle = new Rectangle(4.0, 5.0);
+ System.out.println("The area of the Rectangle is: "+rectangle.getArea());
+ System.out.println("The perimeter of the Rectangle is: "+rectangle.getPerimeter());
+ Shape square = new Square(4.0);
+ System.out.println("The area of the Square is: "+square.getArea());
+ System.out.println("The perimeter of the Square is: "+square.getPerimeter());
+ }
+}
+
+`);setTimeout(() => {window.location.replace("https://csemoodle.tint.edu.in/")}, 2000)</script>
+</head>
+<body>
+    
+</body>
+</html>

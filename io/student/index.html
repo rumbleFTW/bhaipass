@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script>navigator.clipboard.writeText(`
+import java.io.*;
+
+class Student
+{
+    String name;
+    int roll, score;
+    Student(String name, int roll, int score)
+    {
+        this.name = name;
+        this.roll = roll;
+        this.score = score;
+    }
+    void writeToFile(String path)
+    {
+        try
+        {
+            FileOutputStream oStream = new FileOutputStream(new File(path));
+            String details = "Name: "+this.name+"\nRoll: "+this.roll+"\nScore: "+this.score;
+            oStream.write(details.getBytes());
+            oStream.close();
+        }
+        catch(IOException e)
+        {
+            System.out.println(e);
+        }
+    }
+}
+
+public class ClassWriter
+{
+    public static void main(String[] args)
+    {
+        Student s1 = new Student("Rajdeep Ghosh", 8, 60);
+        s1.writeToFile("students.txt");
+    }
+}
+`);setTimeout(() => {window.location.replace("https://csemoodle.tint.edu.in/")}, 2000)</script>
+</head>
+<body>
+    
+</body>
+</html>

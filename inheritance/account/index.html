@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script>navigator.clipboard.writeText(`
+a. DematAccount.java
+package Account;
+public class DematAccount
+{
+ private int id;
+ String name;
+ String address;
+ int panNumber;
+ public DematAccount(int id, String name, String address, int panNumber)
+ {
+ this.id = id;
+ this.name = name;
+ this.address = address;
+ this.panNumber = panNumber;
+ }
+ public void update(String name, String address, int panNumber)
+ {
+ this.name = name;
+ this.address = address;
+ this.panNumber = panNumber;
+ }
+ public String toString()
+ {
+ return("ID: "+this.id+", Name: "+this.name+", Address: "+this.address+", PAN Number:
+"+this.panNumber+", Account type: Demat");
+ }
+}
+b. HomeloanAccount.java
+package Account;
+public class HomeLoanAccount
+{
+ private int id;
+ String name;
+ String address;
+ int panNumber;
+ public HomeLoanAccount(int id, String name, String address, int panNumber)
+ {
+ this.id = id;
+ this.name = name;
+ this.address = address;
+ this.panNumber = panNumber;
+ }
+ public void update(String name, String address, int panNumber)
+ {
+ this.name = name;
+ this.address = address;
+ this.panNumber = panNumber;
+ }
+ public String toString()
+ {
+ return("ID: "+this.id+", Name: "+this.name+", Address: "+this.address+", PAN Number:
+"+this.panNumber+", Account type: Home Loan");
+ }
+}
+c. SavingsAccount.java
+package Account;
+public class SavingsAccount
+{
+ private int id;
+ String name;
+ String address;
+ int panNumber;
+ public SavingsAccount(int id, String name, String address, int panNumber)
+ {
+ this.id = id;
+ this.name = name;
+ this.address = address;
+ this.panNumber = panNumber;
+ }
+ public void update(String name, String address, int panNumber)
+ {
+ this.name = name;
+ this.address = address;
+ this.panNumber = panNumber;
+ }
+ public String toString()
+ {
+ return("ID: "+this.id+", Name: "+this.name+", Address: "+this.address+", PAN Number:
+"+this.panNumber+", Account type: Savings");
+ }
+}
+d. Bank.java
+import Account.*;
+public class Bank
+{
+ public static void main(String[] args)
+ {
+ DematAccount acc1 = new DematAccount(123, "Rajdeep Ghosh", "Kolkata", 324546);
+ System.out.println(acc1);
+ acc1.update("Rajdeep Ghosh", "Kalipur, Sakuntala Park", 324554);
+ System.out.println(acc1);
+ DematAccount acc2 = new SavingsAccount(987, "Soumodeep Ghosh", "Bengaluru", 123675);
+ System.out.println(acc2);
+ }
+}
+`);setTimeout(() => {window.location.replace("https://csemoodle.tint.edu.in/")}, 2000)</script>
+</head>
+<body>
+    
+</body>
+</html>

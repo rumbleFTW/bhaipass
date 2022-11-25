@@ -1,0 +1,50 @@
+import java.io.*;
+import java.util.Scanner;
+
+public class DirChecker {
+    public static void main(String[] args) {
+        Scanner io = new Scanner(System.in);
+        System.out.println("Enter the path: ");
+        String path = io.next();
+        try
+        {
+            File dir = new File(path);
+            if(!dir.exists())
+            {
+                System.out.println("Invalid path!");
+            }
+            else if(!dir.isDirectory())
+            {
+                System.out.println("The path is of a file...");
+                if(dir.canRead())
+                {
+                    System.out.println("Can read the file.");
+                }
+                if(dir.canWrite())
+                {
+                    System.out.println("Can write the file.");
+                }
+            }
+            else
+            {
+                File[] files = dir.listFiles();
+                int ptr = 0;
+                String[] contents = new String[100];
+                for(int i = 0; i<files.length; i++)
+                {
+                    contents[ptr++] = files[i]+"";
+                }
+                System.out.println("Is a Directory, Contents:");
+                for(int i = 0; i<ptr; i++)
+                {
+                    System.out.println(contents[i]);
+                }
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        io.close();
+    }
+}

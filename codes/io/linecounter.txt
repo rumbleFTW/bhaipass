@@ -1,0 +1,56 @@
+import java.io.*;
+import java.util.Scanner;
+
+class LineCounter implements Runnable
+{
+    Thread t;
+    String filePath;
+    LineCounter(String filePath)
+    {
+        this.t = new Thread(this);
+        this.filePath = filePath;
+    }
+    public void run()
+    {
+        try
+        {
+            int lines = 0;
+            LineNumberReader NOL = new LineNumberReader(new FileReader(this.filePath));
+            String line = NOL.readLine();
+            while(line != null)
+            {
+                lines++;
+                line = NOL.readLine();
+            }
+            System.out.println("The number of lines in the file "+this.filePath+" is :"+lines);
+            NOL.close();
+        }
+        catch(IOException e)
+        {
+            System.out.println(e);
+        }
+    }
+}
+
+
+class FileNOLs
+{
+    public static void main(String[] args)
+    {
+        Scanner io = new Scanner(System.in);
+        System.out.println("Enter the number of files: ");
+        int n = io.nextInt();
+        String[] paths = new String[n];
+        System.out.println("Enter the names of the "+n+" files sequentially");
+        for(int i = 0; i<n; i++)
+        {
+            paths[i] = io.next();
+        }
+        io.close();
+        for(int i = 0; i<n; i++)
+        {
+            LineCounter counter = new LineCounter(paths[i]);
+            counter.run();
+        }
+    }
+}

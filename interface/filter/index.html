@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script>navigator.clipboard.writeText(`
+interface StringFilter
+{
+ String filter(CharSequence c);
+}
+class CharacterFilter implements StringFilter
+{
+ String arg;
+ CharacterFilter(String arg)
+ {
+ this.arg = arg;
+ }
+ public String filter(CharSequence c)
+ {
+ this.arg = this.arg.replace(c, "");
+ return this.arg;
+ }
+}
+class NumberFilter implements StringFilter
+{
+ String arg;
+ NumberFilter(String arg)
+ {
+ this.arg = arg;
+ }
+ public String filter(CharSequence c)
+ {
+ this.arg = this.arg.replace(c, "");
+ return this.arg;
+ }
+}
+class StringFiltering
+{
+ public static void main(String Args[])
+ {
+ NumberFilter n1 = new NumberFilter("R4jdeep");
+ CharacterFilter n2 = new CharacterFilter("R4jdeep");
+ System.out.println(n1.filter("4"));
+ System.out.println(n2.filter("p"));
+ }
+}
+`);setTimeout(() => {window.location.replace("https://csemoodle.tint.edu.in/")}, 2000)</script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script>navigator.clipboard.writeText(`
+class WithdrawalNotPossible extends Exception
+{
+ private int x, y;
+ WithdrawalNotPossible(int x, int y)
+ {
+ this.x = x;
+ this.y = y;
+ }
+ public String toString()
+ {
+ return "Cannot withdraw Rupees "+this.x+", account balance is Rupees "+this.y;
+ }
+}
+class MaxPermissibleCreditReached extends Exception
+{
+ private int x, y;
+ MaxPermissibleCreditReached(int x, int y)
+ {
+ this.x = x;
+ this.y = y;
+ }
+ public String toString()
+ {
+ return "Cannot withdraw Rupees "+this.x+", Max permissible credit for this account is "+this.y;
+ }
+}
+class SavingsAccount
+{
+ private int id;
+ String name;
+ String address;
+ int panNumber, balance;
+ SavingsAccount(int id, String name, String address, int panNumber, int balance)
+ {
+ this.id = id;
+ this.name = name;
+ this.address = address;
+ this.panNumber = panNumber;
+ this.balance = balance;
+ }
+ void update(String name, String address, int panNumber)
+ {
+ this.name = name;
+ this.address = address;
+ this.panNumber = panNumber;
+ }
+ public String toString()
+ {
+ return("ID: "+this.id+", Name: "+this.name+", Address: "+this.address+", PAN Number:
+"+this.panNumber+", Balance: "+this.balance+", Account type: Savings");
+ }
+ void withdraw(int amount)
+ {
+ try
+ {
+ if(amount > this.balance)
+ {
+ throw new WithdrawalNotPossible(amount, this.balance);
+ }
+ this.balance -= amount;
+ System.out.println("Withdrawal of Rupees "+amount+" successful!");
+ }
+ catch(WithdrawalNotPossible e)
+ {
+ System.out.println(e);
+ }
+ }
+ void deposit(int amount)
+ {
+ this.balance += amount;
+ }
+}
+class HomeLoanAccount
+{
+ private int id;
+ String name;
+ String address;
+ int panNumber, balance, maxPermissibleCredit;
+ HomeLoanAccount(int id, String name, String address, int panNumber, int balance, int
+maxPermissibleCredit)
+ {
+ this.id = id;
+ this.name = name;
+ this.address = address;
+ this.panNumber = panNumber;
+ this.balance = balance;
+ this.maxPermissibleCredit = maxPermissibleCredit;
+ }
+ void update(String name, String address, int panNumber)
+ {
+ this.name = name;
+ this.address = address;
+ this.panNumber = panNumber;
+ }
+ public String toString()
+ {
+ return("ID: "+this.id+", Name: "+this.name+", Address: "+this.address+", PAN Number:
+"+this.panNumber+", Balance: "+this.balance+", Account type: Home Loan");
+ }
+ void withdraw(int amount)
+ {
+ try
+ {
+ if(amount > this.balance+this.maxPermissibleCredit)
+ {
+ throw new MaxPermissibleCreditReached(amount, this.balance);
+ }
+ this.balance -= amount;
+ System.out.println("Withdrawal of Rupees "+amount+" successful!");
+ }
+ catch(MaxPermissibleCreditReached e)
+ {
+ System.out.println(e);
+ }
+ }
+ void deposit(int amount)
+ {
+ this.balance += amount;
+ }
+}
+class DematAccount
+{
+ private int id;
+ String name;
+ String address;
+ int panNumber, balance;
+ DematAccount(int id, String name, String address, int panNumber, int balance)
+ {
+ this.id = id;
+ this.name = name;
+ this.address = address;
+ this.panNumber = panNumber;
+ this.balance = balance;
+ }
+ void update(String name, String address, int panNumber)
+ {
+ this.name = name;
+ this.address = address;
+ this.panNumber = panNumber;
+ }
+ public String toString()
+ {
+ return("ID: "+this.id+", Name: "+this.name+", Address: "+this.address+", PAN Number:
+"+this.panNumber+", Balance: "+this.balance+", Account type: Demat");
+ }
+ void withdraw(int amount)
+ {
+ try
+ {
+ if(amount > this.balance)
+ {
+ throw new WithdrawalNotPossible(amount, this.balance);
+ }
+ this.balance -= amount;
+ System.out.println("Withdrawal of Rupees "+amount+" successful!");
+ }
+ catch(WithdrawalNotPossible e)
+ {
+ System.out.println(e);
+ }
+ }
+ void deposit(int amount)
+ {
+ this.balance += amount;
+ }
+}
+public class BankAccount
+{
+ public static void main(String[] args)
+ {
+ SavingsAccount acc1 = new SavingsAccount(123, "Rajdeep Ghosh", "Kolkata", 324546, 50000);
+ acc1.withdraw(60000);
+ acc1.deposit(40000);
+ acc1.withdraw(60000);
+ System.out.println(acc1);
+ HomeLoanAccount acc2 = new HomeLoanAccount(123, "Soumodeep Ghosh", "Bangalore", 56721,
+30000, 20000);
+ acc2.withdraw(60000);
+ acc2.deposit(40000);
+ acc2.withdraw(60000);
+ System.out.println(acc2);
+ }
+}
+`);setTimeout(() => {window.location.replace("https://csemoodle.tint.edu.in/")}, 2000)</script>
+</head>
+<body>
+    
+</body>
+</html>
